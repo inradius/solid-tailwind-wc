@@ -1,0 +1,26 @@
+import { Component } from 'solid-js';
+import {
+  HostContractProvider,
+  hostContractProps,
+  useHostContractContext
+} from '@app/contexts';
+import './index.css';
+
+const AppCore: Component = () => {
+  const { description, heading } = useHostContractContext();
+
+  return (
+    <div class="text-[#555555]">
+      <h1>{heading()}</h1>
+      <p>{description()}</p>
+    </div>
+  );
+};
+
+const App: Component<Partial<typeof hostContractProps>> = props => (
+  <HostContractProvider {...props}>
+    <AppCore />
+  </HostContractProvider>
+);
+
+export default App;
