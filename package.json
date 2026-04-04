@@ -4,9 +4,8 @@
   "description": "A Solid.js with Tailwind web component scaffold.",
   "type": "module",
   "scripts": {
-    "build": "pnpm build:app:solid && pnpm build:app:wc",
-    "build:app:solid": "vite build builds/build-app/app",
-    "build:app:wc": "vite build builds/build-app/wc",
+    "build": "vite build builds/build-app/wc",
+    "build:app": "vite build builds/build-app/app",
     "dev": "vite builds/build-app/app --host --open",
     "lint": "eslint src",
     "prettier": "prettier src -c",
@@ -51,7 +50,7 @@
   },
   "msw": {
     "workerDirectory": [
-      "src/builds/build-app/public"
+      "builds/build-app/public"
     ]
   }
 }

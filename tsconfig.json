@@ -11,7 +11,6 @@
     "paths": {
       "@app": ["./src/apps/app"],
       "@app/*": ["./src/apps/app/*"],
-      "@dist/*": ["./dist/*"],
       "@mocks/*": ["./src/mocks/*"],
       "@tools/*": ["./tools/*"]
     },
@@ -19,5 +18,5 @@
     "target": "esnext",
     "types": ["@testing-library/jest-dom", "node", "vite/client", "vitest/globals"]
   },
-  "include": ["builds", "dist", "src", "tools"]
+  "include": ["builds", "src", "tools"]
 }

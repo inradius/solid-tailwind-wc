@@ -5,7 +5,9 @@ describe('<App />', () => {
   it('should render the app with default props', async () => {
     const { findByText, unmount } = render(() => <App />);
     expect(await findByText('Hello World')).toBeInTheDocument();
-    expect(await findByText('A Solid.js with Tailwind web component scaffold.')).toBeInTheDocument();
+    expect(
+      await findByText('A Solid.js with Tailwind web component scaffold.')
+    ).toBeInTheDocument();
     unmount();
   });
 
