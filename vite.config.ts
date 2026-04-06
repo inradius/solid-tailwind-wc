@@ -1,14 +1,12 @@
+import tailwindcss from '@tailwindcss/vite';
 import { ConfigEnv, defineConfig } from 'vite';
 import solidPlugin from 'vite-plugin-solid';
-import tailwindcss from '@tailwindcss/vite';
 import tsconfigPaths from 'vite-tsconfig-paths';
 
 const viteConfig = ({ mode }: ConfigEnv) =>
   defineConfig({
-    plugins: [solidPlugin({ dev: mode === 'development', hot: mode !== 'test' }), tailwindcss(), tsconfigPaths()],
-    server: { port: 3000 },
     build: {
-      target: 'ESNext',
+      emptyOutDir: false,
       rollupOptions: {
         output: {
           assetFileNames: '[name][extname]',
@@ -16,11 +14,13 @@ const viteConfig = ({ mode }: ConfigEnv) =>
           entryFileNames: '[name]-[hash].js'
         }
       },
-      emptyOutDir: false
+      target: 'ESNext'
     },
+    plugins: [solidPlugin({ dev: mode === 'development', hot: mode !== 'test' }), tailwindcss(), tsconfigPaths()],
     resolve: {
       conditions: ['browser', 'development']
-    }
+    },
+    server: { port: 3000 }
   });
 
 export default viteConfig;
