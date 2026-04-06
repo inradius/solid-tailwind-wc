@@ -9,17 +9,17 @@ export default defineConfig(env =>
   mergeConfig(viteConfig(env), {
     base: './',
     build: {
-      outDir: resolve(__dirname, '..', '..', '..', 'dist', 'qa'),
       lib: {
         entry: resolve(__dirname, 'index.ts'),
         formats: ['iife'],
         name: 'SolidWC'
       },
+      outDir: resolve(__dirname, '..', '..', '..', 'dist', 'qa'),
       rollupOptions: {
         external: [/\.css$/],
         output: {
-          entryFileNames: `solid-wc-${version}.min.js`,
-          assetFileNames: '[hash][extname]'
+          assetFileNames: '[hash][extname]',
+          entryFileNames: `solid-wc-${version}.min.js`
         }
       }
     },
@@ -28,12 +28,12 @@ export default defineConfig(env =>
       vitePluginFileManager({
         items: [
           {
-            source: './dist/qa/solid-wc*',
-            destination: './dist/prod'
+            destination: './dist/prod',
+            source: './dist/qa/solid-wc*'
           },
           {
-            source: './dist/qa/version-manifest.json',
-            destination: './dist/prod'
+            destination: './dist/prod',
+            source: './dist/qa/version-manifest.json'
           }
         ]
       })
